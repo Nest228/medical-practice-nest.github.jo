@@ -1,0 +1,1321 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Врачебная практика</title>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Manrope', sans-serif;
+        }
+        
+        body {
+            background-color: #FFFEFD;
+            width: 100%;
+            margin: 0;
+            overflow-x: hidden;
+        }
+        
+        /* Верхняя панель */
+        .top-bar {
+            width: 100%;
+            height: 86px;
+            background: #D9D7CC;
+            display: flex;
+            align-items: center;
+            padding: 0 80px;
+            justify-content: space-between;
+            position: relative;
+        }
+        
+        .promo-text {
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 19px;
+            color: #000000;
+            width: 472px;
+        }
+        
+        .top-contacts {
+            display: flex;
+            gap: 40px;
+        }
+        
+        .phone, .address {
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 22px;
+            text-decoration: underline;
+            color: #000000;
+            white-space: nowrap;
+        }
+        
+        .address a {
+            color: inherit;
+            text-decoration: inherit;
+        }
+        
+        /* Основная навигация */
+        .header {
+            display: flex;
+            align-items: center;
+            padding: 20px 80px 0;
+            justify-content: space-between;
+            position: relative;
+            flex-wrap: wrap;
+        }
+        
+        .logo {
+            width: 192px;
+            height: 68px;
+            object-fit: contain;
+        }
+        
+        .nav {
+            display: flex;
+            gap: 40px;
+            position: absolute;
+            left: 405px;
+        }
+        
+        .nav-item {
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 22px;
+            color: #594D3E;
+            white-space: nowrap;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-item:hover {
+            color: #3a3328;
+            text-decoration: underline;
+        }
+        
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+        
+        .search {
+            width: 50px;
+            height: 50px;
+            background: #594D3E;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .search:hover {
+            background: #3a3328;
+            transform: scale(1.05);
+        }
+        
+        .search-icon {
+            width: 24px;
+            height: 24px;
+            color: white;
+        }
+        
+        .appointment-btn {
+            width: 167px;
+            height: 55px;
+            background: #594D3E;
+            border-radius: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 16px;
+            line-height: 22px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .appointment-btn:hover {
+            background: #3a3328;
+            transform: translateY(-2px);
+        }
+        
+        /* Слайдер */
+        .slider-container {
+            position: relative;
+            width: 100%;
+            height: 626px;
+            margin: 41px 0 0;
+            overflow: hidden;
+        }
+        
+        .slider {
+            display: flex;
+            transition: transform 0.5s ease;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .slide {
+            min-width: 100%;
+            height: 100%;
+            position: relative;
+        }
+        
+        /* Первый слайд */
+        .slide-1 {
+            padding: 0 0 0 80px;
+        }
+        
+        .main-banner {
+            width: 955px;
+            height: 100%;
+            background: #F2EFE9;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .banner-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .banner-image:hover {
+            transform: scale(1.02);
+        }
+        
+        .banner-promo {
+            position: absolute;
+            width: 267px;
+            height: 38px;
+            top: 50px;
+            left: 101px;
+            background: #FFFFFF;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+        }
+        
+        .banner-promo-text {
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 19px;
+            color: #000000;
+        }
+        
+        .banner-title {
+            position: absolute;
+            width: 561px;
+            top: 152px;
+            left: 101px;
+            font-weight: 700;
+            font-size: 48px;
+            line-height: 1.2;
+            color: #594D3E;
+            z-index: 2;
+        }
+        
+        .banner-title br {
+            display: block;
+            content: "";
+            margin-bottom: 10px;
+        }
+        
+        .banner-btn {
+            position: absolute;
+            width: 225px;
+            height: 58px;
+            top: 348px;
+            left: 101px;
+            background: #594D3E;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 16px;
+            line-height: 22px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 2;
+        }
+        
+        .banner-btn:hover {
+            background: #3a3328;
+            transform: translateY(-2px);
+        }
+        
+        .reviews {
+            position: absolute;
+            width: 143px;
+            height: 22px;
+            top: 485px;
+            left: 101px;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 22px;
+            color: #000000;
+            z-index: 2;
+        }
+        
+        .yandex-review {
+            position: absolute;
+            width: 175px;
+            height: 73px;
+            top: 500px;
+            left: 101px;
+            object-fit: contain;
+            z-index: 2;
+        }
+        
+        .stars {
+            position: absolute;
+            top: 580px;
+            left: 101px;
+            display: flex;
+            gap: 8px;
+            z-index: 2;
+        }
+        
+        .star {
+            width: 30px;
+            height: 30px;
+            color: #E5C71A;
+        }
+        
+        .star:first-child {
+            opacity: 1;
+        }
+        
+        .star:not(:first-child) {
+            opacity: 0.2;
+        }
+        
+        /* Второй слайд */
+        .slide-2 {
+            padding: 0 0 0 80px;
+        }
+        
+        .main-banner-2 {
+            width: 955px;
+            height: 100%;
+            background: #F2EFE9;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .banner-promo-2 {
+            position: absolute;
+            width: 267px;
+            height: 38px;
+            top: 50px;
+            left: 101px;
+            background: #FFFFFF;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+        }
+        
+        .phone-number {
+            font-weight: 700;
+            font-size: 28px;
+            line-height: 100%;
+            color: #594D3E;
+        }
+        
+        .banner-title-2 {
+            position: absolute;
+            width: 561px;
+            top: 152px;
+            left: 101px;
+            font-weight: 700;
+            font-size: 48px;
+            line-height: 1.2;
+            color: #594D3E;
+            z-index: 2;
+        }
+        
+        .banner-title-2 br {
+            display: block;
+            content: "";
+            margin-bottom: 10px;
+        }
+        
+        .banner-btn-2 {
+            position: absolute;
+            width: 225px;
+            height: 58px;
+            top: 348px;
+            left: 101px;
+            background: #594D3E;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 16px;
+            line-height: 22px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 2;
+        }
+        
+        .banner-btn-2:hover {
+            background: #3a3328;
+            transform: translateY(-2px);
+        }
+        
+        .slide-logo {
+            position: absolute;
+            width: 234px;
+            height: 83px;
+            top: 485px;
+            left: 101px;
+            object-fit: contain;
+            z-index: 2;
+        }
+        
+        /* Боковые карточки - ИСПРАВЛЕННЫЕ СТИЛИ */
+        .side-cards {
+            position: absolute;
+            top: 0;
+            right: 80px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 20px;
+            z-index: 10;
+        }
+        
+        .card {
+            width: 305px;
+            border-radius: 20px;
+            padding: 20px;
+            position: relative;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .card-1 {
+            height: 196px;
+            background: #D9D7CC;
+        }
+        
+        .card-2 {
+            height: 194px;
+            background: #BFBBB4;
+        }
+        
+        .card-3 {
+            height: 196px;
+            background: #F2EFE9;
+        }
+        
+        .card-icon {
+            width: 74px;
+            height: 74px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .card-icon img {
+            width: 45px;
+            height: 45px;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover .card-icon img {
+            transform: scale(1.1);
+        }
+        
+        .card-title {
+            font-weight: 700;
+            font-size: 16px;
+            line-height: 22px;
+            color: #000000;
+            margin-bottom: 10px;
+        }
+        
+        .card-text {
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 22px;
+            color: #000000;
+        }
+        
+        .card-arrow {
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            right: 20px;
+            top: 20px;
+            transform: rotate(-135deg); /* Исправлено: поворот на 45° влево */
+            transition: all 0.3s ease;
+        }
+        
+        .card:hover .card-arrow {
+            transform: rotate(-135deg) translate(-5px, 5px); /* Исправлено: движение при наведении */
+        }
+        
+        /* О клинике - ИСПРАВЛЕННЫЕ СТИЛИ */
+        .about-section {
+            width: 90%;
+            max-width: 1280px;
+            height: 611px;
+            margin: 110px auto 0;
+            padding-bottom: 5vw;
+            display: flex;
+            position: relative;
+        }
+        
+        .about-images {
+            position: relative;
+            width: 50%;
+            min-height: 500px;
+        }
+        
+        .about-image-1 {
+            position: absolute;
+            width: 60%;
+            max-width: 351px;
+            height: auto;
+            aspect-ratio: 351/458;
+            top: 20%;
+            left: 0;
+            border-radius: 20px;
+            object-fit: cover;
+            transition: all 0.5s ease;
+            z-index: 1;
+        }
+        
+        .about-image-2 {
+            position: absolute;
+            width: 55%;
+            max-width: 344px;
+            height: auto;
+            aspect-ratio: 344/265;
+            top: 0;
+            left: 45%;
+            border-radius: 20px;
+            box-shadow: 2px 2px 8.8px 2px rgba(32, 105, 140, 0.2);
+            object-fit: cover;
+            transition: all 0.5s ease;
+            z-index: 1;
+        }
+        
+        .about-logo {
+            position: absolute;
+            width: 40%;
+            max-width: 306px;
+            height: auto;
+            top: 30%;
+            left: 50%;
+            transform: translateX(-50%);
+            filter: drop-shadow(0 0 20px rgba(217, 215, 204, 0.2));
+            object-fit: contain;
+            z-index: 2;
+        }
+        
+        .about-content {
+            width: 50%;
+            padding-left: 50px;
+        }
+        
+        .about-tab {
+            width: 169px;
+            height: 38px;
+            background: #F2EFE9;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 16px;
+            line-height: 22px;
+            color: #594D3E;
+            margin-bottom: 30px;
+        }
+        
+        .about-title {
+            font-weight: 700;
+            font-size: 40px;
+            line-height: 55px;
+            color: #000000;
+            margin-bottom: 30px;
+        }
+        
+        .about-text {
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 22px;
+            color: #000000;
+            margin-bottom: 30px;
+        }
+        
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .feature-icon {
+            width: 24px;
+            height: 24px;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+        
+        .feature:hover .feature-icon {
+            transform: scale(1.2);
+        }
+        
+        .feature-text {
+            font-weight: 700;
+            font-size: 16px;
+            line-height: 22px;
+            color: #000000;
+        }
+        
+        .consult-btn {
+            width: 293px;
+            height: 58px;
+            background: #594D3E;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 22px;
+            margin-top: 50px;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        
+        .consult-btn:hover {
+            background: #3a3328;
+            transform: translateY(-2px);
+        }
+        
+        .consult-btn::after {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255,255,255,0.1);
+            transform: rotate(45deg);
+            transition: all 0.5s ease;
+        }
+        
+        .consult-btn:hover::after {
+            left: 100%;
+        }
+        
+        .consult-btn-arrow {
+            position: absolute;
+            width: 10px;
+            height: 14px;
+            right: 40px;
+            transform: rotate(-90deg);
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .consult-btn:hover .consult-btn-arrow {
+            transform: rotate(-90deg) translateX(5px);
+        }
+        
+        .stats-card {
+            position: absolute;
+            width: 329px;
+            height: 123px;
+            top: auto;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #F2EFE9;
+            border-radius: 20px;
+            box-shadow: 2px 2px 8.8px 2px rgba(32, 105, 140, 0.2);
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            z-index: 3;
+            transition: all 0.3s ease;
+        }
+        
+        .stats-card:hover {
+            transform: translateX(-50%) translateY(-5px);
+            box-shadow: 0 10px 20px rgba(32, 105, 140, 0.3);
+        }
+        
+        .stats-icon {
+            width: 78px;
+            height: 78px;
+            background: #8C7E6C;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+        }
+        
+        .stats-icon img {
+            width: 44px;
+            height: 45px;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+        
+        .stats-card:hover .stats-icon img {
+            transform: scale(1.1);
+        }
+        
+        .stats-number {
+            font-weight: 700;
+            font-size: 40px;
+            line-height: 55px;
+            color: #000000;
+        }
+        
+        .stats-text {
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 19px;
+            color: #000000;
+        }
+        
+        /* Кнопки слайдера */
+        .slider-controls {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+        
+        .slider-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #D9D7CC;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .slider-dot:hover {
+            transform: scale(1.3);
+        }
+        
+        .slider-dot.active {
+            background: #594D3E;
+            transform: scale(1.3);
+        }
+        
+        /* Дополнительные элементы */
+        .warmth-container {
+            position: absolute;
+            width: 305px;
+            right: 80px;
+            top: 778px;
+            z-index: 10;
+        }
+        
+        .warmth-text {
+            font-weight: 700;
+            font-size: 16px;
+            line-height: 22px;
+            color: #000000;
+            margin-bottom: 10px;
+        }
+        
+        .warmth-subtext {
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 22px;
+            color: #000000;
+        }
+        
+        /* Анимации */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .fade-in {
+            animation: fadeIn 1s ease-in-out;
+        }
+        
+        /* Медиазапросы */
+        @media (max-width: 1440px) {
+            .top-bar, .header {
+                padding: 0 5%;
+            }
+            
+            .nav {
+                left: 28%;
+                gap: 4vw;
+            }
+            
+            .side-cards {
+                right: 5%;
+            }
+            
+            .about-section {
+                width: 90%;
+            }
+            
+            .warmth-container {
+                right: 5%;
+            }
+        }
+        
+        @media (max-width: 1200px) {
+            .nav {
+                gap: 3vw;
+                left: 25%;
+            }
+            
+            .header-right {
+                gap: 3vw;
+            }
+            
+            .main-banner, .main-banner-2 {
+                width: 85%;
+            }
+            
+            .side-cards {
+                right: 3%;
+            }
+            
+            .about-section {
+                height: auto;
+                flex-wrap: wrap;
+            }
+            
+            .about-images {
+                width: 100%;
+                height: 400px;
+            }
+            
+            .about-content {
+                width: 100%;
+                padding-left: 0;
+                margin-top: 50px;
+            }
+        }
+        
+        @media (max-width: 1024px) {
+            .banner-title, .banner-title-2 {
+                font-size: 4vw;
+                width: 80%;
+            }
+            
+            .about-title {
+                font-size: 3.5vw;
+            }
+            
+            .stats-number {
+                font-size: 3.5vw;
+            }
+            
+            .nav {
+                gap: 2vw;
+                left: 22%;
+            }
+            
+            .header-right {
+                gap: 2vw;
+            }
+        }
+        
+        @media (max-width: 900px) {
+            .nav {
+                position: static;
+                margin: 20px 0;
+                justify-content: center;
+                gap: 20px;
+                flex-wrap: wrap;
+                order: 3;
+                width: 100%;
+            }
+            
+            .header {
+                flex-direction: row;
+                padding-bottom: 20px;
+            }
+            
+            .header-right {
+                margin-top: 0;
+                margin-left: auto;
+            }
+            
+            .slider-container {
+                height: auto;
+                min-height: 500px;
+            }
+            
+            .main-banner, .main-banner-2 {
+                width: 100%;
+                height: 500px;
+            }
+            
+            .side-cards {
+                position: static;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                margin: 20px auto;
+                padding: 0 5%;
+                width: 100%;
+                height: auto;
+            }
+            
+            .card {
+                width: 100%;
+                max-width: 305px;
+                height: auto !important;
+                min-height: 180px;
+                margin-bottom: 20px;
+            }
+            
+            .about-section {
+                flex-direction: column;
+                height: auto;
+                margin-top: 50px;
+                width: 100%;
+                padding: 0 5%;
+            }
+            
+            .about-images, .about-content {
+                width: 100%;
+            }
+            
+            .about-content {
+                padding-left: 0;
+                margin-top: 350px;
+            }
+            
+            .stats-card {
+                top: 300px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 80%;
+                max-width: 329px;
+                height: 120px;
+            }
+            
+            .warmth-container {
+                position: static;
+                margin: 20px auto;
+                text-align: center;
+                width: 100%;
+                padding: 0 5%;
+            }
+            
+            .about-title {
+                font-size: 24px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .top-bar {
+                flex-direction: column;
+                height: auto;
+                padding: 10px 5%;
+            }
+            
+            .promo-text {
+                margin-bottom: 10px;
+                text-align: center;
+                width: 100%;
+                max-width: 100%;
+            }
+            
+            .top-contacts {
+                gap: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .banner-title, .banner-title-2 {
+                font-size: 24px;
+                line-height: 1.3;
+                left: 5%;
+                width: 90%;
+            }
+            
+            .banner-promo, .banner-promo-2 {
+                left: 5%;
+                width: auto;
+                padding: 0 20px;
+            }
+            
+            .banner-btn, .banner-btn-2 {
+                left: 5%;
+            }
+            
+            .reviews, .yandex-review, .stars {
+                left: 5%;
+            }
+            
+            .slide-logo {
+                left: 5%;
+            }
+            
+            .header {
+                padding: 20px 5% 0;
+            }
+            
+            .nav {
+                gap: 10px;
+                justify-content: flex-start;
+            }
+            
+            .nav-item {
+                font-size: 14px;
+            }
+            
+            .appointment-btn {
+                width: 140px;
+                height: 45px;
+                font-size: 14px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .banner-title, .banner-title-2 {
+                font-size: 20px;
+                top: 100px;
+            }
+            
+            .banner-btn, .banner-btn-2 {
+                width: 180px;
+                height: 50px;
+                font-size: 14px;
+                top: 280px;
+            }
+            
+            .appointment-btn {
+                width: 140px;
+                height: 45px;
+                font-size: 14px;
+            }
+            
+            .consult-btn {
+                width: 250px;
+                height: 50px;
+            }
+            
+            .about-images {
+                height: 300px;
+            }
+            
+            .about-image-1 {
+                width: 60%;
+                height: 200px;
+                top: 100px;
+            }
+            
+            .about-image-2 {
+                width: 60%;
+                height: 150px;
+                top: 0;
+                left: 30%;
+            }
+            
+            .about-logo {
+                width: 150px;
+                height: 150px;
+                top: 150px;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            
+            .stats-card {
+                top: 250px;
+            }
+            
+            .nav {
+                gap: 10px;
+            }
+            
+            .nav-item {
+                font-size: 14px;
+            }
+            
+            .search {
+                width: 40px;
+                height: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Верхняя панель -->
+    <div class="top-bar">
+        <div class="promo-text">Здесь краткая акция или текст про: узнай больше о нас через отзывы...</div>
+        <div class="top-contacts">
+            <div class="phone">+7 (967) 010-30-03</div>
+            <div class="address"><a href="https://vk.com/vrach_praktika?w=address-229398398_80794"> улица Семёна Гордого, 1, Москва</a></div>
+        </div>
+    </div>
+    
+    <!-- Логотип и навигация -->
+    <div class="header">
+        <img src="logo.png" alt="Врачебная практика" class="logo">
+        
+        <div class="nav">
+            <div class="nav-item services">Услуги</div>
+            <div class="nav-item price">Прайс</div>
+            <div class="nav-item doctors">Врачи</div>
+            <div class="nav-item dentistry">Стоматология</div>
+            <div class="nav-item contacts">Контакты</div>
+        </div>
+        
+        <div class="header-right">
+            <div class="search">
+                <svg class="search-icon" viewBox="0 0 24 24">
+                    <path fill="currentColor" d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" />
+                </svg>
+            </div>
+            
+            <div class="appointment-btn">Записаться</div>
+        </div>
+    </div>
+    
+    <!-- Слайдер -->
+    <div class="slider-container">
+        <div class="slider">
+            <!-- Первый слайд -->
+            <div class="slide slide-1">
+                <div class="main-banner">
+                    <img src="DSC01602.png" alt="Клиника" class="banner-image">
+                    
+                    <div class="banner-promo">
+                        <div class="banner-promo-text">забота, которой можно доверять</div>
+                    </div>
+                    
+                    <h1 class="banner-title">
+                        Высшее качество<br>
+                        диагностики<br>
+                        и лечения
+                    </h1>
+                    
+                    <div class="banner-btn">Записаться</div>
+                    
+                    <div class="reviews">Отзывы пациентов</div>
+                    
+                    <img src="EUGm6EIb94y1I7BEK4vKQ.png" alt="Яндекс отзывы" class="yandex-review">
+                    
+                    <div class="stars">
+                        <svg class="star" viewBox="0 0 30 30">
+                            <path fill="currentColor" d="M15,23L6,28l3-10L1,11h11L15,1l3,10h11l-8,7l3,10L15,23z" />
+                        </svg>
+                        <svg class="star" viewBox="0 0 30 30">
+                            <path fill="currentColor" d="M15,23L6,28l3-10L1,11h11L15,1l3,10h11l-8,7l3,10L15,23z" />
+                        </svg>
+                        <svg class="star" viewBox="0 0 30 30">
+                            <path fill="currentColor" d="M15,23L6,28l3-10L1,11h11L15,1l3,10h11l-8,7l3,10L15,23z" />
+                        </svg>
+                        <svg class="star" viewBox="0 0 30 30">
+                            <path fill="currentColor" d="M15,23L6,28l3-10L1,11h11L15,1l3,10h11l-8,7l3,10L15,23z" />
+                        </svg>
+                        <svg class="star" viewBox="0 0 30 30">
+                            <path fill="currentColor" d="M15,23L6,28l3-10L1,11h11L15,1l3,10h11l-8,7l3,10L15,23z" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Второй слайд -->
+            <div class="slide slide-2">
+                <div class="main-banner-2">
+                    <img src="DSC0161vv2.png" alt="Клиника" class="banner-image">
+                    
+                    <div class="banner-promo-2">
+                        <div class="phone-number">+7 967 010 30 03</div>
+                    </div>
+                    
+                    <h1 class="banner-title-2">
+                        Помощь<br>
+                        в шаге<br>
+                        от Вас!
+                    </h1>
+                    
+                    <div class="banner-btn-2">Записаться</div>
+                    
+                    <img src="logo.png" alt="Врачебная практика" class="slide-logo">
+                </div>
+            </div>
+        </div>
+        
+        <!-- Боковые карточки - ПЕРЕМЕЩЕНЫ ВНУТРЬ slider-container -->
+        <div class="side-cards">
+            <div class="card card-1">
+                <div class="card-icon">
+                    <img src="tooth-icon.png" alt="Зуб">
+                </div>
+                <h3 class="card-title">Стоматологическая клиника</h3>
+                <p class="card-text">Все виды стоматологических услуг</p>
+                <svg class="card-arrow" viewBox="0 0 24 24">
+                    <path fill="currentColor" d="M5,17.59L15.59,7H9V5H19V15H17V8.41L6.41,19L5,17.59Z" />
+                </svg>
+            </div>
+            
+            <div class="card card-2">
+                <div class="card-icon">
+                    <img src="notebook-icon.png" alt="Блокнот">
+                </div>
+                <h3 class="card-title">Комплексное обследование</h3>
+                <p class="card-text">Профилактические чек-апы</p>
+                <svg class="card-arrow" viewBox="0 0 24 24">
+                    <path fill="currentColor" d="M5,17.59L15.59,7H9V5H19V15H17V8.41L6.41,19L5,17.59Z" />
+                </svg>
+            </div>
+            
+            <div class="card card-3">
+                <div class="card-icon">
+                    <img src="medical-icon.png" alt="Медицина">
+                </div>
+                <h3 class="card-title">Тепло, забота, профессионализм</h3>
+                <p class="card-text">Ваше здоровье - наша забота</p>
+                <svg class="card-arrow" viewBox="0 0 24 24">
+                    <path fill="currentColor" d="M5,17.59L15.59,7H9V5H19V15H17V8.41L6.41,19L5,17.59Z" />
+                </svg>
+            </div>
+        </div>
+        
+        <!-- Кнопки слайдера -->
+        <div class="slider-controls">
+            <div class="slider-dot active" data-index="0"></div>
+            <div class="slider-dot" data-index="1"></div>
+        </div>
+    </div>
+    
+    <!-- О клинике -->
+    <div class="about-section">
+        <div class="about-images">
+            <img src="photo_2025-03-07_14-29-58.png" alt="Клиника" class="about-image-1">
+            <img src="DSC01612.png" alt="Врачи" class="about-image-2">
+            <img src="full-logo.png" alt="Логотип" class="about-logo">
+            
+            <div class="stats-card">
+                <div class="stats-icon">
+                    <img src="staff-icon.png" alt="Персонал">
+                </div>
+                <div>
+                    <div class="stats-number">20+</div>
+                    <div class="stats-text">Персонал клиники</div>
+                </div>
+            </div>
+        </div>
+        <div class="about-content">
+            <div class="about-tab">О нас</div>
+            <h2 class="about-title">Мы рядом, когда это важно</h2>
+            <p class="about-text">
+                Медицинский центр «Врачебная практика» — это современная клиника, где забота о вашем здоровье стоит на первом месте. Мы предлагаем широкий спектр медицинских услуг, включая диагностику, консультативные приемы специалистов и круглосуточную стоматологию. В клинике созданы комфортные условия для пациентов любого возраста.
+            </p>
+            
+            <div class="feature">
+                <img src="checkmark.png" alt="Галочка" class="feature-icon">
+                <div class="feature-text">Круглосуточная стоматология</div>
+            </div>
+            <div class="feature">
+                <img src="checkmark.png" alt="Галочка" class="feature-icon">
+                <div class="feature-text">Все виды анализов</div>
+            </div>
+            
+            <div class="feature">
+                <img src="checkmark.png" alt="Галочка" class="feature-icon">
+                <div class="feature-text">Опытные специалисты</div>
+            </div>
+            
+            <div class="feature">
+                <img src="checkmark.png" alt="Галочка" class="feature-icon">
+                <div class="feature-text">Современное оборудование</div>
+            </div>
+            
+            <p class="about-text">
+                Мы понимаем, как важно своевременно выявить проблему и найти оптимальное решение. Независимо от сложности ситуации, мы всегда готовы помочь вам и вашим близким. Ваше здоровье — наша забота!
+            </p>
+            
+            <div class="consult-btn">
+                Получить консультацию
+                <svg class="consult-btn-arrow" viewBox="0 0 10 14">
+                    <path fill="currentColor" d="M5,14L0,9l1.5-1.5L5,11.2l3.5-3.7L10,9L5,14z" />
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <!-- Дополнительный контент может быть добавлен здесь -->
+    <div style="height: 100px;"></div> <!-- Просто для демонстрации прокрутки -->
+
+<script>
+    // Слайдер
+    const slider = document.querySelector('.slider');
+    const slides = document.querySelectorAll('.slide');
+    const dots = document.querySelectorAll('.slider-dot');
+    let currentIndex = 0;
+    
+    function goToSlide(index) {
+        slider.style.transform = `translateX(-${index * 100}%)`;
+        currentIndex = index;
+        
+        // Обновляем активную точку
+        dots.forEach(dot => dot.classList.remove('active'));
+        dots[index].classList.add('active');
+    }
+    
+    // Обработчики для точек
+    dots.forEach(dot => {
+        dot.addEventListener('click', () => {
+            const index = parseInt(dot.getAttribute('data-index'));
+            goToSlide(index);
+        });
+    });
+    
+    // Автопереключение слайдов
+    setInterval(() => {
+        const nextIndex = (currentIndex + 1) % slides.length;
+        goToSlide(nextIndex);
+    }, 5000);
+</script>
+</body>
+</html>
